@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sidh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sidh
+  template:
+    metadata:
+      labels:
+        app: sidh
+    spec:
+      imagePullSecrets:
+        - name: myregistrykey
+      containers:
+        - name: sidh
+          image: sidh2004/projectest:latest
+          ports:
+            - containerPort: 80
